@@ -83,7 +83,7 @@
 	<script type="text/javascript">
 		var _index = 0; 
 		//图片自动轮播
-		setInterval(function  () {
+		function move () {
 			_index++;
 			if(_index==6){
 				$("#innerBox").css("left",0);
@@ -91,22 +91,27 @@
 			}
 			//计算大div应该移动的left值
 			var l = _index * -$("#innerBox li").width();
-			$("#innerBox").animate({"left":l+"px"},300);
+			$("#innerBox").stop().animate({"left":l+"px"},300);
 			if(_index ==5){
-				$("#arrow li").eq(0).css({"color":"blue"}).siblings('').css({"color":"white"});
+				$("#arrow li").eq(0).css({"color":"blue"}).siblings().css({"color":"white"});
 			}else{
-				$("#arrow li").eq(_index).css({"color":"blue"}).siblings('').css({"color":"white"});
+				$("#arrow li").eq(_index).css({"color":"blue"}).siblings().css({"color":"white"});
 			}
-
-		},1500);
+		}
+		timer = setInterval(move,1000);
 		
 		
-		$("#arrow li").on("click",function  () {
+		$("#arrow li").on("mouseover",function  () {
+			clearInterval(timer);
 			_index = $(this).index();
 			//计算大div应该到达的left值
 			left = _index * -$("#innerBox li").width();
 			$("#innerBox").stop().animate({"left":left+"px"},300);
 			$(this).css({"color":"blue"}).siblings().css({"color":"white"});
+		});
+		
+		$("#arrow").on("mouseout",function  () {
+			timer = setInterval(move,1000);
 		});
 	</script>
 </html>
