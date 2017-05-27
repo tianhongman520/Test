@@ -98,11 +98,15 @@
 				$("#arrow li").eq(_index).css({"color":"blue"}).siblings().css({"color":"white"});
 			}
 		}
-		timer = setInterval(move,1000);
+		var timer = setInterval(move,3000);
 		
-		
-		$("#arrow li").on("mouseover",function  () {
+		$("#arrow").on("mouseover",function  () {
 			clearInterval(timer);
+		}).on("mouseout",function  () {
+			timer = setInterval(move,3000);
+		});
+		
+		$("#arrow li").on("click",function  () {
 			_index = $(this).index();
 			//计算大div应该到达的left值
 			left = _index * -$("#innerBox li").width();
@@ -110,8 +114,6 @@
 			$(this).css({"color":"blue"}).siblings().css({"color":"white"});
 		});
 		
-		$("#arrow").on("mouseout",function  () {
-			timer = setInterval(move,1000);
-		});
+		
 	</script>
 </html>
