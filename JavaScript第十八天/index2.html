@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action=""http://www.marrymin.com:8180/Ajax/Post"" method="post" enctype="multipart/form-data">
+			<input type="text" name="username" id="username" value="" />
+			<input type="text" name="password" id="password" value="" />
+			<input type="submit" value="提交"/>
+		</form>
+		
+		
+		<script type="text/javascript">
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function  () {
+				if (xhr.readyState==4) {
+					alert(xhr.responseText);
+				}
+			}
+			
+			xhr.open("POST","http://www.marrymin.com:8180/Ajax/Post");
+			
+			var formdata=new FormData();
+			
+			formdata.append("username","111");
+			formdata.append("password","222");
+			
+			xhr.send(formdata);
+		</script>
+	</body>
+</html>
