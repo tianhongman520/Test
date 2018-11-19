@@ -2,7 +2,8 @@
 		//days	hours	minutes	 seconds 天	小时	分钟	秒
 		function getTime() {
 			//获得指定的时间与日期	实际时间是   2016年1月11日
-			var date = new Date(2015, 12, 11, 20, 30, 00);
+			// noinspection JSAnnotator
+            var date = new Date(2015, 12, 11, 20, 30, 00);
 			var da = Date.parse(date);
 			//获得现在的时间与日期
 			var time = new Date();
